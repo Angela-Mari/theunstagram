@@ -5,6 +5,13 @@ h1 {
   color: white;
 }
 
+
+h3 {
+  font-family: "Kode Mono", sans-serif;
+  font-weight: 20 pt;
+  font-style: bold;
+}
+
 p {
   font-family: "Kode Mono", sans-serif;
   font-weight: 12 pt;

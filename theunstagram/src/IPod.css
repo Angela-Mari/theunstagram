@@ -2,6 +2,71 @@
     width: 240px;
     height: 410px;
     background-image: linear-gradient(to bottom right,#B9B0FF, #E8D6FF, #4B3AD4);;
-    border: 5px, solid, #4B3AD4;
+    border: 5px solid #4B3AD4;
     border-radius: 5%;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.iPodScreen {
+    width: 230px;
+    height: 175px;
+    background-color: #A5E2EE;
+    border: 3px solid #0ABCE0;
+    border-radius: 5%;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: row;
+}
+.iPodScroll {
+    width: 180px;
+    height: 180px;
+    background-color: #B9B0FF;
+    border: 3px solid #4B3AD4;
+    border-radius: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.cover {
+    width: 100px;
+    height: 100px;
+    margin-top: 15px;
+}
+
+.screenContent {
+    padding: 5px;
+}
+
+.scrollButton {
+    width: 75px;
+    height: 75px;
+    background-image: linear-gradient(to bottom right, #E8D6FF, #7f74d6 );
+    border: 3px solid #4B3AD4;
+    border-radius: 100%;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.scrollRow1{
+    display: flex;
+    flex-direction: row;
+    height: 50px;
+}
+
+.scrollRow2{
+    display: flex;
+    flex-direction: row;
+    height: 75px;
+    align-items: center;
+}
+
+.scrollRow3{
+    display: flex;
+    flex-direction: row;
+    height: 50px;
 }

@@ -53,7 +53,9 @@ useEffect(() => {
           
         </Col>
         <Col>
-          <IPod></IPod>
+          {
+            episodes?  <IPod episodes={episodes}></IPod> : <></>
+          }
         </Col>
         <footer>
             <p style={{textAlign:"center"}}>

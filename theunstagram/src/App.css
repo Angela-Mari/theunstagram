@@ -2,4 +2,17 @@ h1 {
   font-family: "Micro 5", sans-serif;
   font-weight: 64 pt;
   font-style: normal;
+  color: white;
+}
+
+p {
+  font-family: "Kode Mono", sans-serif;
+  font-weight: 12 pt;
+  font-style: normal;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 99vw;
 }

@@ -1,0 +1,7 @@
+.iPod {
+    width: 240px;
+    height: 410px;
+    background-image: linear-gradient(to bottom right,#B9B0FF, #E8D6FF, #4B3AD4);;
+    border: 5px, solid, #4B3AD4;
+    border-radius: 5%;
+}

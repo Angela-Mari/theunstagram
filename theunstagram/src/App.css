@@ -1,20 +1,26 @@
 h1 {
   font-family: "Micro 5", sans-serif;
-  font-weight: 64 pt;
+  font-size: 64px;
   font-style: normal;
   color: white;
 }
 
 
+h2 {
+  font-family: "Micro 5", sans-serif;
+  font-size: 32px;
+  font-style: bold;
+}
+
 h3 {
   font-family: "Kode Mono", sans-serif;
-  font-weight: 20 pt;
+  font-size: 20px;
   font-style: bold;
 }
 
 p {
   font-family: "Kode Mono", sans-serif;
-  font-weight: 12 pt;
+  font-size: 12px;
   font-style: normal;
 }
 
@@ -22,4 +28,6 @@ footer {
   position: fixed;
   bottom: 0;
   width: 99vw;
+  height: 50px;
+  background-image: linear-gradient(#FFCC33, #FF9933, #0ABCE0);
 }

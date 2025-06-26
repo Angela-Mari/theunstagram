@@ -5,6 +5,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { useEffect } from 'react';
 import { useState } from 'react';
+import kodak from './assets/kodak.png';
 
 function App() {
 
@@ -44,19 +45,26 @@ useEffect(() => {
 
   return (
     
-    <div className='main'>
-      <Container>
+    
+      <Container fluid>
         <Row>
-            <h1 style={{textAlign:"center"}}> Welcome to The Unstagram</h1>
-          </Row> 
-        <Col>
+          <Col>
+            <h1 style={{textAlign:"center"}}> 🌺 Welcome to The Unstagram 🌺 </h1>
+          </Col>
+        </Row>
+        <Row style={{backgroundColor:"pink"}}>
+          <Col md={1} style={{backgroundColor:"red"}}>hi</Col> 
+          <Col  md={5} style={{backgroundColor:"blue"}}>
           
-        </Col>
-        <Col>
-          {
-            episodes?  <IPod episodes={episodes}></IPod> : <></>
-          }
-        </Col>
+            <img src={kodak} alt="kodak easyshare pink background" width="400px"/>
+          </Col>
+          <Col md={5} style={{backgroundColor:"yellow"}}>
+          
+            {
+              episodes?  <IPod episodes={episodes}></IPod> : <></>
+            }
+          </Col>
+        </Row>
         <footer>
             <p style={{textAlign:"center"}}>
               © Angela George 2025 <br></br>
@@ -64,7 +72,7 @@ useEffect(() => {
             </p>
         </footer>
       </Container>
-    </div>
+
     
   )
 }

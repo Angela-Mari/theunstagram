@@ -35,8 +35,6 @@ function IPod({episodes})
     };
 
     useEffect(()=> {
-
-        console.log("in use Effect")
         const audio = audioRef.current;
         if (!audio) return;
 
@@ -58,13 +56,11 @@ function IPod({episodes})
     }, [number]);
 
     const handlePlay = () => {
-        console.log("in handle play")
         audioRef.current.play();
         setIsPlaying(true);
     }
 
     const handlePause = () => {
-        console.log("in handle pause")
         audioRef.current.pause();
         setIsPlaying(false);
     }

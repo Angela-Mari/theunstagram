@@ -24,10 +24,71 @@ p {
   font-style: normal;
 }
 
+ol {
+  font-family: "Kode Mono", sans-serif;
+  font-size: 12px;
+  font-weight: bold;
+}
+
 footer {
   position: fixed;
   bottom: 0;
   width: 99vw;
-  height: 50px;
-  background-image: linear-gradient(#FFCC33, #FF9933, #0ABCE0);
+  height: 75px;
+  background-image: linear-gradient(#FFCC33, #FF9933 15%, #0ABCE0 75%);
+}
+
+.menu {
+  width: 200px;
+  padding: 5px;
+  background-color: #FFD9F5;
+  border: solid 5px #F624DA;
+}
+
+.imageGallery {
+  z-index: 5;
+  position: absolute;
+  margin-left: 25px;
+  margin-top: 90px;
+  width: 280px;
+  height: 210px;
+}
+
+.camera {
+  width: 450px;
+  position: relative;
+  display: flex;
+  margin: 0 auto
+}
+
+.socialIcons{
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+}
+
+.btn {
+  font-family: 'Kode Mono', sans-serif;
+  color: black;
+  background-color: #A5E2EE;
+  border: 3px solid #0ABCE0;
+}
+
+.btn:hover{
+  color: white;
+  background-color: #0ABCE0;
+  border: 3px solid #0ABCE0;
+}
+
+.modal-content {
+  background-color: #FFD9F5;
+  border: solid 5px #F624DA;
+}
+
+.modal-header {
+  border-bottom: solid 3px #F624DA;
+}
+
+.modal-footer {
+  border-top: solid 3px #F624DA;
 }

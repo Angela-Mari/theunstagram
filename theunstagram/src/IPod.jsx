@@ -25,9 +25,10 @@ function IPod({episodes})
     };
 
     const handleTimeUpdate = () => {
-
         const audioCheck = audioRef.current;
-        if (!audioCheck) return;
+        if (!audioCheck) {
+            return;
+        }
 
         setCurrentTime(audioRef.current.currentTime)
         setDuration(audioRef.current.duration)
@@ -35,26 +36,35 @@ function IPod({episodes})
 
     useEffect(()=> {
 
-        const audioCheck = audioRef.current;
-        if (!audioCheck) return; 
+        console.log("in use Effect")
+        const audio = audioRef.current;
+        if (!audio) return;
 
-        audioRef.current.addEventListener("timeupdate", handleTimeUpdate);
-        
-          return () => {
-            // Query the DOM directly to avoid stale or null ref issues
-            const existingAudio = document.querySelector('audio');
-            if (existingAudio) {
-            existingAudio.removeEventListener("timeupdate", handleTimeUpdate);
-            }
+        const updateTime = () => {
+            setCurrentTime(audio.currentTime);
+        };
+
+        const updateMetadata = () => {
+            setDuration(audio.duration || 0); // fallback to 0 if still NaN
+        };
+
+        audio.addEventListener("timeupdate", handleTimeUpdate);
+        audio.addEventListener("loadedmetadata", updateMetadata);
+
+        return () => {
+            audio.removeEventListener("timeupdate", updateTime);
+            audio.removeEventListener("loadedmetadata", updateMetadata);
         };
     }, [number]);
 
     const handlePlay = () => {
-         audioRef.current.play();
+        console.log("in handle play")
+        audioRef.current.play();
         setIsPlaying(true);
     }
 
     const handlePause = () => {
+        console.log("in handle pause")
         audioRef.current.pause();
         setIsPlaying(false);
     }
@@ -65,6 +75,24 @@ function IPod({episodes})
        else {
         handlePlay();
        }
+    }
+
+    function formatDuration(durationSeconds){
+        if (!durationSeconds || isNaN(durationSeconds)) return "0:00";
+        const minutes = Math.floor(durationSeconds / 60);
+        const seconds = Math.floor(durationSeconds % 60);
+        const formattedSeconds = seconds.toString().padStart(2, "0");
+        return `${minutes}:${formattedSeconds}`;
+    }
+
+    function handleForward (){
+        changeNumber((number+1)%5)
+        setIsPlaying(false)
+    }
+
+    function handleBack () {
+        changeNumber(((5 + (number-1))%5))
+        setIsPlaying(false)
     }
 
     return (
@@ -91,7 +119,7 @@ function IPod({episodes})
                     {/* Audio */}
                      <audio ref={audioRef} src={episodes[number].meta.audio_file}></audio>
                     
-                    <p>{currentTime}</p>
+                    <p>{formatDuration(currentTime)}</p>
 
                     {/* the audio track */}
                     <input
@@ -103,8 +131,8 @@ function IPod({episodes})
                     />
                     {/* track duration */}
                     
-                    <p>{duration}</p>
-
+                    <p>{formatDuration(duration)}</p>
+                    {/* <p>{duration}</p> */}
                 </div>
             </div>
             <div className='iPodScroll'>
@@ -114,12 +142,12 @@ function IPod({episodes})
                     </a>
                 </div>
                 <div className='scrollRow2'>
-                        <img width="32px" height="32px" src={forward} alt="end" style={{transform: "rotate(180deg)", cursor:"pointer"}} onClick={() => changeNumber(((5 + (number-1))%5))}/>                
+                        <img width="32px" height="32px" src={forward} alt="end" style={{transform: "rotate(180deg)", cursor:"pointer"}} onClick={handleBack}/>                
                     <div className='scrollButton'></div>
-                        <img width="32px" height="32px" src={forward} alt="end" onClick={() => changeNumber((number+1)%5)} style={{cursor:"pointer"}}/>                
+                        <img width="32px" height="32px" src={forward} alt="end" onClick={handleForward} style={{cursor:"pointer"}}/>                
                     </div>
                 <div className='scrollRow3' >
-                    <button onClick={handlePlayPause}>
+                    <button onClick={handlePlayPause} style={{border:"none", backgroundColor:"transparent"}}>
                         <img src={pause} width="32px" height="32px" style={{marginTop:"10px"}}/>
                     </button>
                 </div>

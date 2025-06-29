@@ -35,6 +35,9 @@ footer {
   flex-direction: column;
   padding: 0;
   margin: 0;
+  width: 100%;
+  position: absolute;
+  height: auto;
 }
 
 .footerParagraph{
@@ -51,7 +54,7 @@ footer {
 }
 
 .footerImgDiv {
-  background-image: linear-gradient(rgba(255, 0, 72, 0), rgba(255, 0, 72, 0.5), rgb(255 0 72) 70%, #FFCC33 75%, #FF9933 90%);
+  background-image: linear-gradient(rgb(255 0 72) 70%, #FFCC33 75%, #FF9933 90%);
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
@@ -60,6 +63,7 @@ footer {
 
 .footerDolphin {
   width: 100px;
+  margin-left: 15px
 }
 
 .footerFakeDolphin {
@@ -72,11 +76,39 @@ footer {
 }
 
 .menu {
-  width: 200px;
-  padding: 5px;
+  width: 75%;
+  padding: 15px;
+  margin: 15px;
   background-color: #FFD9F5;
   border: solid 5px #F624DA;
 }
+
+@media only screen and (max-width: 1200px) {
+  .scaled {
+    transform: scale(0.4);
+    }
+}
+
+
+@media only screen and (max-width: 1000px) {
+  .scaled {
+    transform: scale(0.3);
+    }
+}
+
+@media only screen and (max-width: 900px) {
+  .scaled {
+    transform: scale(0.2);
+    }
+}
+
+@media only screen and (max-width: 885px) {
+  .scaled {
+    transform: scale(0.05);
+    }
+}
+
+
 
 .imageGallery {
   z-index: 5;
@@ -89,9 +121,14 @@ footer {
 
 .camera {
   width: 450px;
+  margin-left: auto;
+  margin-right: auto;
   position: relative;
-  display: flex;
-  margin: 0 auto
+  background-color: orange;
+}
+
+.kodak {
+  width:450px;
 }
 
 .socialIcons{

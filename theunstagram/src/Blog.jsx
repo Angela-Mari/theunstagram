@@ -10,7 +10,7 @@ function Blog({posts}) {
     <Container className="blogContainer">
         <Row>
             <Col className='text-center'>
-                <img src={header} alt="blog gif" width="200px"/>
+                <img src={header} alt="too busy blogging to pee" className="headerGif"/>
             </Col>
         </Row>
         <Row>

@@ -92,7 +92,6 @@ function IPod({episodes})
     }
 
     return (
-       <Container>
         <div className='iPod scaled'>
             <div className='iPodScreen'>
                 <div className='screenRow1'>
@@ -150,7 +149,6 @@ function IPod({episodes})
                 
             </div>
         </div>
-        </Container> 
     )
 }
 

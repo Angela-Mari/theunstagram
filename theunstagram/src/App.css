@@ -81,32 +81,62 @@ footer {
   margin: 15px;
   background-color: #FFD9F5;
   border: solid 5px #F624DA;
+
+  p {
+    text-decoration: underline;
+    color: #AF1A87;
+  }
+
+  p:hover {
+    color: #FF0048
+  }
 }
 
 @media only screen and (max-width: 1200px) {
-  .scaled {
-    transform: scale(0.4);
+  .scaled-camera {
+    transform: scale(90%);
     }
 }
 
 
 @media only screen and (max-width: 1000px) {
-  .scaled {
-    transform: scale(0.3);
+  .scaled-camera {
+    transform: scale(80%);
     }
 }
 
 @media only screen and (max-width: 900px) {
-  .scaled {
-    transform: scale(0.2);
+  .scaled-camera {
+    transform: scale(75%);
     }
 }
 
-@media only screen and (max-width: 885px) {
-  .scaled {
-    transform: scale(0.05);
+@media only screen and (max-width: 873px) {
+  .scaled-camera {
+    transform: scale(65%);
+    margin-left: -30px;
     }
 }
+
+@media only screen and (max-width: 767px) {
+  .scaled-camera {
+    transform: scale(100%);    
+    }
+}
+
+@media only screen and (max-width: 484px) {
+  .scaled-camera {
+    transform: scale(80%);
+    }
+}
+
+@media only screen and (max-width: 484px) {
+  .scaled-camera {
+    transform: scale(75%);
+    margin-left: -30px;
+    }
+}
+
 
 
 
@@ -124,7 +154,6 @@ footer {
   margin-left: auto;
   margin-right: auto;
   position: relative;
-  background-color: orange;
 }
 
 .kodak {

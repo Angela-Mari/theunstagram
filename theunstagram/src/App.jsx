@@ -51,10 +51,15 @@ useEffect(() => {
 
   }, []);
 
-  const [show, setShow] = useState(false);
+  const [showAboutMe, setShowAboutMe] = useState(false);
 
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const handleCloseAboutMe = () => setShowAboutMe(false);
+  const handleShowAboutMe = () => setShowAboutMe(true);
+
+  const [showKodak, setShowKodak] = useState(false);
+
+  const handleCloseKodak = () => setShowKodak(false);
+  const handleShowKodak = () => setShowKodak(true);
 
   return (
     <div style={{backgroundImage:"linear-gradient(#4B3AD4, #AF1A87 75%, #FF0048 95%)", height:"100%"}}>
@@ -78,10 +83,9 @@ useEffect(() => {
           <Col lg={3} md={3}>
             <div className='menu'>
               <h2>Menu</h2>
-              <p onClick={handleShow}>About Me</p>
-              <p>Kodak Easyshare Z1485 IS</p>
-              <p>Zines</p>
-              <p>Poems</p>
+              <p onClick={handleShowAboutMe}>About Me</p>
+              <p onClick={handleShowKodak}>Kodak Easyshare Z1485 IS</p>
+              <a href="https://angelageorge.com/zineland"><p>Zines</p></a>
             </div>
           </Col> 
 
@@ -89,7 +93,8 @@ useEffect(() => {
           <Col  lg={6} md={5} >
             {/* Image Carousel */}
             <Row >
-              <div className='scaled'>
+              <Col className="d-flex flex-column justify-content-center">
+              <div className='scaled-camera'>
               <div className='camera'>
                 <Carousel className='imageGallery' controls={false} fade>
                   {/* Mapping images */}
@@ -107,6 +112,7 @@ useEffect(() => {
                 <img src={kodak} alt="kodak easyshare pink background" className="kodak"/>
               </div>
               </div>
+              </Col>
             </Row>
             <Row>
               <Col style={{color:"white"}}>
@@ -150,14 +156,15 @@ useEffect(() => {
         </Row>
       
         {/* Modals */}
-        <Modal show={show} onHide={handleClose}>
+
+        {/* About Me */}
+        <Modal show={showAboutMe} onHide={handleCloseAboutMe}>
           <Modal.Header closeButton>
             <Modal.Title><h2>About Me</h2></Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <p>
               Hi! I'm Angela. I'm the blogger behind <a href="https://angelageorge.com">angelageorge.com</a>, the podcast host of Voz Memos, and a recently converted digicam enthusiast. When I discover a new hobby I go all in. Not by buying 100s of dollars of accessories or the top of the line gear, but by shouting from the rooftops "look at this cool new thing I'm doing!" I love capturing these moments of inspiration and excitement in a web page or blog format. This site was particularly ambitious as I am self hosting the web server on a little Raspberry Pi in my closet: the ultimate indie web project.
-
             </p>
             <p>
               I'm sure you'll learn more about me from the media linked across this site. Take a peak and if you like what you see follow for more.
@@ -169,12 +176,43 @@ useEffect(() => {
             </div>
           </Modal.Body>
           <Modal.Footer>
-            <Button onClick={handleClose}>
+            <Button onClick={handleCloseAboutMe}>
               Close
             </Button>
           </Modal.Footer>
         </Modal>
       
+      {/* About Kodak */}
+      <Modal show={showKodak} onHide={handleCloseKodak} scrollable={true}>
+          <Modal.Header closeButton>
+            <Modal.Title><h2>Kodak Easyshare Z1485 IS</h2></Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <p>
+              I bought this camera mainly because it's pink. However, in researching the digicam trend, I was reminded of the iconic history behind the Kodak brand and its digital demise.
+            </p>
+            <p>
+              Specs: 14 MP, 5X Optical Zoom, 1/1.72 inch size sensor,  2.5-inch 230K pixel LCD display, 2GB SD card holds ~400 photos, launched in 2008 
+            </p>
+            <p>
+              The Kodak Easyshare brand began in 2001 with many different subseries (DX, CX, C, Z, V, P, One, and M) ending in 2012 when the Kodak company filed for bankruptcy in January. This camera line was a small but ultimately failed effort to pull Kodak into the digital age. Kodak patented the first digital camera in 1975 but kept the technology secret, hoping they could protect film sales. After decades of resistance to pivot away from film photography, the very technology Kodak invented (years before it took off with consumers) was what caused its downfall.
+            </p>
+            <p>
+              It's an unsettling case of self-destruction from failure to change and adapt. And yet, by using this camera today, I am resisting a different wave of change. Most point-and-shoot cameras struggle to compete with modern phone cameras. Any photography YouTube channel would scoff at using a digicam from the early 2000s. Most of them cringe at the recent spike in prices and popularity of the outdated tech. I would say, while there is a case for keeping up with the times and riding the wave of innovation, there is also a place for a moment of reflection.
+            </p>
+            <p>
+              Those early digicams did not store 1000s of pictures. They didn't have FaceTune and AI enhancements at the touch of a button. It was one step beyond film; a chance to retake the photo if you blinked, but not take dozens of the same pic. My Z1485 has a multi-second delay between each shot! This seemed annoying at first, but slowing down is why I bought it.
+            </p>
+            <p>
+              This is the crux of the digicam movement: nostalgia, intentionality, and living in the moment. Luckily, I managed to avoid the Etsy price gouging by sourcing mine on a Poshmark listing with no batteries or SD card. I've seen the same camera I bought for $20 listed for $40-80. More popular models cost $100+ if they have been bedazzled. So if any of this resonates with you, find an old camera and create.
+            </p>
+          </Modal.Body>
+          <Modal.Footer>
+            <Button onClick={handleCloseKodak}>
+              Close
+            </Button>
+          </Modal.Footer>
+        </Modal>
         {/* Footer */}
         <footer>
               <div className="footerImgDiv">

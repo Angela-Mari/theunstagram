@@ -206,6 +206,11 @@ useEffect(() => {
             <p>
               This is the crux of the digicam movement: nostalgia, intentionality, and living in the moment. Luckily, I managed to avoid the Etsy price gouging by sourcing mine on a Poshmark listing with no batteries or SD card. I've seen the same camera I bought for $20 listed for $40-80. More popular models cost $100+ if they have been bedazzled. So if any of this resonates with you, find an old camera and create.
             </p>
+            <p><b>References</b></p>
+            <p><a href="https://en.wikipedia.org/wiki/Kodak_EasyShare#cite_note-15">Wiki Kodak Easyshare</a><br/>
+            <a href="https://businesshistory.domain-b.com/focus/kodak-a-journey-from-creating-memories-to-bankruptcy">Kodak A Journey From Creating Memories to Bankruptcy</a><br/>
+            <a href="https://archive.nytimes.com/lens.blogs.nytimes.com/2015/08/12/kodaks-first-digital-moment">Kodaks First Digital Moment</a>
+            </p>
           </Modal.Body>
           <Modal.Footer>
             <Button onClick={handleCloseKodak}>

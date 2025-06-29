@@ -2,13 +2,17 @@ html, body {
     height: 100%;
     margin: 0;
     padding: 0;
+    overflow-x: hidden;
+
 }
 
 body {
   background-image: linear-gradient(#4B3AD4,#AF1A87 75%, #FF0048 95%);
   /* Full height */
-  height: auto; 
+  min-height: 100vh; 
   width: auto;
+  display: flex;
+  flex-direction: column;
 
   /* Center and scale the image nicely */
   background-position: center;

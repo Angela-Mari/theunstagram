@@ -31,11 +31,44 @@ ol {
 }
 
 footer {
-  position: fixed;
-  bottom: 0;
-  width: 99vw;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  margin: 0;
+}
+
+.footerParagraph{
+    text-align:center;
+}
+
+.footerParDiv {
+  background-image: linear-gradient(#FF9933, #0ABCE0 75%);
+  height: 50px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footerImgDiv {
+  background-image: linear-gradient(rgba(255, 0, 72, 0), rgba(255, 0, 72, 0.5), rgb(255 0 72) 70%, #FFCC33 75%, #FF9933 90%);
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  width:100%
+}
+
+.footerDolphin {
+  width: 100px;
+}
+
+.footerFakeDolphin {
+  width: 100px;
+}
+
+.footerSunset {
+  width: 75px;
   height: 75px;
-  background-image: linear-gradient(#FFCC33, #FF9933 15%, #0ABCE0 75%);
 }
 
 .menu {

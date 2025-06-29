@@ -59,7 +59,7 @@ useEffect(() => {
   return (
     
     
-      <Container fluid>
+      <Container fluid className='p-0'>
         <Row>
           <Col>
             <h1 style={{textAlign:"center"}}>
@@ -133,23 +133,22 @@ useEffect(() => {
 
           </Col>
         </Row>
-        <Row>
-          <Col>
-            <img src={dolphin} alt="dolphin jumping annimation" width="150px" style={{position:"absolute", zIndex:"1", bottom:"45px",left: "5%"
-}}/>
-            <img src={sunset} alt="sunset annimation" width="100px" height="100px" style={{position:"absolute", zIndex:"1", bottom:"45px",left: "47%"
-}}/>
-            
-          </Col>
+        <Row noGutters>
           <footer>
-                <div style={{height:"25px"}}></div>
-                <p style={{textAlign:"center"}}>
-                  © Angela George 2025 <br></br>
-                  This website is not affliated with Meta or Instagram
-                </p>
-              </footer>
+            <div className="footerImgDiv">
+              <img src={dolphin} alt="dolphin jumping annimation" className='footerDolphin'/>
+              <img src={sunset} alt="sunset annimation" className='footerSunset'/>      
+              <div className='footerFakeDolphin'>
+              </div>  
+            </div>
+            <div className="footerParDiv">
+              <p className="footerParagraph" >
+                © Angela George 2025 <br></br>
+                This website is not affliated with Meta or Instagram
+              </p>
+            </div>
+          </footer>
         </Row>
-        
 
 
         {/* Modals */}

@@ -96,6 +96,7 @@ footer {
   .scaled-camera {
     transform: scale(90%);
     }
+
 }
 
 
@@ -116,18 +117,23 @@ footer {
     transform: scale(65%);
     margin-left: -30px;
     }
+    
 }
 
 @media only screen and (max-width: 767px) {
   .scaled-camera {
     transform: scale(100%);    
     }
+
+  
 }
 
 @media only screen and (max-width: 484px) {
   .scaled-camera {
     transform: scale(80%);
     }
+
+  
 }
 
 @media only screen and (max-width: 484px) {
@@ -190,4 +196,19 @@ footer {
 
 .modal-footer {
   border-top: solid 3px #F624DA;
+}
+
+.floated {
+  max-height: 200px;
+  min-height: 100px;
+  float: left;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+
+.blogContainer {
+    background-color: #A5E2EE;
+    border: solid 5px #0ABCE0;
+    width: 75%;
+    margin-bottom: 15px;
 }

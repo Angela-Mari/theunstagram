@@ -11,6 +11,8 @@ import kodak from './assets/kodak.png';
 import sunset from './assets/sunset.gif';
 import dolphin from './assets/dolphin.gif';
 import hibiscus from './assets/hibiscus.png';
+import kodak2 from './assets/kodak2.jpeg';
+import me from './assets/me.jpg';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import agbw from './assets/bw.png';
@@ -86,8 +88,10 @@ useEffect(() => {
               <p onClick={handleShowAboutMe}>About Me</p>
               <p onClick={handleShowKodak}>Kodak Easyshare Z1485 IS</p>
               <a href="https://angelageorge.com/zineland"><p>Zines</p></a>
+              <a href="https://angelageorge.com/voz-memos"><p>Podcast</p></a>
+              <a href="https://angelageorge.com/"><p>Blog</p></a>
             </div>
-          </Col> 
+          </Col>
 
           {/* Kodak & Manifesto */}
           <Col  lg={6} md={5} >
@@ -143,11 +147,11 @@ useEffect(() => {
 
           {/* Blog & iPod */}
           <Col lg={3} md={4} className="d-flex flex-column justify-content-center">
-            <Row>
+            <Container className="blogContainer">
               {
                   posts?  <Blog posts={posts}></Blog> : <></>
               }
-            </Row>
+            </Container>
               {
                 episodes?  <IPod episodes={episodes}></IPod> : <></>
               }
@@ -163,6 +167,7 @@ useEffect(() => {
             <Modal.Title><h2>About Me</h2></Modal.Title>
           </Modal.Header>
           <Modal.Body>
+            <img src={me} className='floated' />
             <p>
               Hi! I'm Angela. I'm the blogger behind <a href="https://angelageorge.com">angelageorge.com</a>, the podcast host of Voz Memos, and a recently converted digicam enthusiast. When I discover a new hobby I go all in. Not by buying 100s of dollars of accessories or the top of the line gear, but by shouting from the rooftops "look at this cool new thing I'm doing!" I love capturing these moments of inspiration and excitement in a web page or blog format. This site was particularly ambitious as I am self hosting the web server on a little Raspberry Pi in my closet: the ultimate indie web project.
             </p>
@@ -188,9 +193,12 @@ useEffect(() => {
             <Modal.Title><h2>Kodak Easyshare Z1485 IS</h2></Modal.Title>
           </Modal.Header>
           <Modal.Body>
+            <div>
+              <img src={kodak2} className='floated'/>
             <p>
               I bought this camera mainly because it's pink. However, in researching the digicam trend, I was reminded of the iconic history behind the Kodak brand and its digital demise.
             </p>
+            </div>
             <p>
               Specs: 14 MP, 5X Optical Zoom, 1/1.72 inch size sensor,  2.5-inch 230K pixel LCD display, 2GB SD card holds ~400 photos, launched in 2008 
             </p>
@@ -211,6 +219,7 @@ useEffect(() => {
             <a href="https://businesshistory.domain-b.com/focus/kodak-a-journey-from-creating-memories-to-bankruptcy">Kodak A Journey From Creating Memories to Bankruptcy</a><br/>
             <a href="https://archive.nytimes.com/lens.blogs.nytimes.com/2015/08/12/kodaks-first-digital-moment">Kodaks First Digital Moment</a>
             </p>
+            
           </Modal.Body>
           <Modal.Footer>
             <Button onClick={handleCloseKodak}>

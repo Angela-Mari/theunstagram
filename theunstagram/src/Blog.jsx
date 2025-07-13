@@ -7,7 +7,7 @@ import './Blog.css';
 function Blog({posts}) {
 
     return (
-    <Container className="blogContainer">
+    <Container>
         <Row>
             <Col className='text-center'>
                 <img src={header} alt="too busy blogging to pee" className="headerGif"/>

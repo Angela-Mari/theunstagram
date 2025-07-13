@@ -18,6 +18,37 @@ h3 {
   font-style: bold;
 }
 
+.navbar {
+  background-color: #4c3ad400 !important;
+
+  .navbar-brand{
+    color: white !important;
+    font-family: "Micro 5", sans-serif;
+    font-size: 32px;
+  }
+
+  .nav-link{
+        color: white !important;
+        font-family: "Kode Mono", sans-serif;
+        text-decoration: underline;
+  }
+
+  .navbar-toggler-icon {
+    background-image: url("./assets/icons8-hamburger-32.png") !important;
+  }
+
+  .navbar-toggler {
+      border-color: white !important;
+      border-width: 2px;
+      
+  }
+
+  .navbar-toggler:focus {
+    box-shadow: none
+  }
+  
+}
+
 p {
   font-family: "Kode Mono", sans-serif;
   font-size: 12px;

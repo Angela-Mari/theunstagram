@@ -16,6 +16,8 @@ import me from './assets/me.jpg';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import agbw from './assets/bw.png';
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
 
 // Top-level glob import (runs at build time)
 const imageModules = import.meta.glob('./assets/june/*.{jpg,jpeg,png,svg,JPG,JPEG,PNG,SVG}', {
@@ -64,37 +66,57 @@ useEffect(() => {
   const handleShowKodak = () => setShowKodak(true);
 
   return (
-    <div style={{backgroundImage:"linear-gradient(#4B3AD4, #AF1A87 75%, #FF0048 95%)", height:"100%"}}>
+    <div style={{backgroundImage:"linear-gradient( #4B3AD4, #AF1A87 75%, #FF0048 95%)", height:"100%"}}>
       <Container fluid className='p-0' >
 
         {/* Header */}
         <Row >
           <Col>
-            <h1 style={{textAlign:"center"}}>
-              <img src={hibiscus} alt="pixel art hibiscus" width="50px" style={{marginRight:"10px"}}/>
-              Welcome to The Unstagram
-              <img src={hibiscus} alt="pixel art hibiscus" width="50px" style={{marginLeft:"5px"}}/>
-            </h1>
+            
           </Col>
         </Row>
 
+        <Container>
+          {/* Menu */}
+          <Navbar expand="lg">
+              <Navbar.Brand>                
+                  <img src={hibiscus} alt="pixel art hibiscus" width="50px" style={{marginRight:"10px"}}/>
+                  The Unstagram
+              </Navbar.Brand>
+              <Navbar.Toggle aria-controls="basic-navbar-nav" />
+              <Navbar.Collapse id="basic-navbar-nav">
+                <Nav className="me-auto">
+                  <Nav.Link onClick={handleShowAboutMe}>About Me</Nav.Link>
+                  <Nav.Link onClick={handleShowKodak}>Kodak Easyshare Z1485 IS</Nav.Link>
+                  <Nav.Link href="https://angelageorge.com/zineland">Zines</Nav.Link>
+                  <Nav.Link href="https://angelageorge.com/voz-memos">Podcast</Nav.Link>
+                  <Nav.Link href="https://angelageorge.com/">Blog</Nav.Link>
+                  <Nav.Link href="https://github.com/Angela-Mari">GitHub</Nav.Link>
+                </Nav>
+              </Navbar.Collapse>
+          </Navbar>
+        </Container>
         {/* Body */}
         <Row>
 
-          {/* Menu */}
-          <Col lg={3} md={3}>
-            <div className='menu'>
-              <h2>Menu</h2>
-              <p onClick={handleShowAboutMe}>About Me</p>
-              <p onClick={handleShowKodak}>Kodak Easyshare Z1485 IS</p>
-              <a href="https://angelageorge.com/zineland"><p>Zines</p></a>
-              <a href="https://angelageorge.com/voz-memos"><p>Podcast</p></a>
-              <a href="https://angelageorge.com/"><p>Blog</p></a>
-            </div>
-          </Col>
+          
 
           {/* Kodak & Manifesto */}
-          <Col  lg={6} md={5} >
+
+          {/* Blog & iPod */}
+          <Col lg={3} md={4} className="d-flex flex-column justify-content-center">
+            <Container className="blogContainer">
+              {
+                  posts?  <Blog posts={posts}></Blog> : <></>
+              }
+            </Container>
+              {
+                episodes?  <IPod episodes={episodes}></IPod> : <></>
+              }
+            
+          </Col>
+
+          <Col  lg={8} md={7} >
             {/* Image Carousel */}
             <Row >
               <Col className="d-flex flex-column justify-content-center">
@@ -145,18 +167,7 @@ useEffect(() => {
             </Row>
           </Col>
 
-          {/* Blog & iPod */}
-          <Col lg={3} md={4} className="d-flex flex-column justify-content-center">
-            <Container className="blogContainer">
-              {
-                  posts?  <Blog posts={posts}></Blog> : <></>
-              }
-            </Container>
-              {
-                episodes?  <IPod episodes={episodes}></IPod> : <></>
-              }
-            
-          </Col>
+          
         </Row>
       
         {/* Modals */}

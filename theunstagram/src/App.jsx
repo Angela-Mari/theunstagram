@@ -19,14 +19,6 @@ import agbw from './assets/bw.png';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 
-// Top-level glob import (runs at build time)
-const imageModules = import.meta.glob('./assets/june/*.{jpg,jpeg,png,svg,JPG,JPEG,PNG,SVG}', {
-  eager: true,
-});
-
-// Extract the default exports (the URLs)
-const images = Object.values(imageModules).map((mod) => mod.default);
-
 function App() {
 
 
@@ -34,6 +26,8 @@ function App() {
 const [posts, setPosts] = useState()
 
 const [episodes, setEpisodes] = useState()
+
+const [kodakPosts, setKodakPosts] = useState()
 
 useEffect(() => {
   fetch('https://angelageorge.com/wp-json/wp/v2/posts?categories=53&per_page=5')
@@ -52,6 +46,26 @@ useEffect(() => {
     })
     .catch(err => console.error('Error fetching episodes:', err));
 
+  fetch('https://angelageorge.com/wp-json/wp/v2/posts?tags=308')
+     .then(res => res.json())
+      .then((kodakData) => {
+        const processedPosts = kodakData.map(post => {
+          const html = post.content.rendered;
+
+          // Use DOMParser to get image srcs from HTML
+          const parser = new DOMParser();
+          const doc = parser.parseFromString(html, 'text/html');
+          const images = Array.from(doc.querySelectorAll('img')).map(img => img.src);
+
+          return {
+            date: post.date,
+            images,
+          };
+        });
+
+        setKodakPosts(processedPosts);
+      })
+      .catch(err => console.error('Error fetching posts:', err));
 
   }, []);
 
@@ -64,6 +78,8 @@ useEffect(() => {
 
   const handleCloseKodak = () => setShowKodak(false);
   const handleShowKodak = () => setShowKodak(true);
+
+  console.log(kodakPosts)
 
   return (
     <div style={{backgroundImage:"linear-gradient( #4B3AD4, #AF1A87 75%, #FF0048 95%)", height:"100%"}}>
@@ -124,7 +140,7 @@ useEffect(() => {
               <div className='camera'>
                 <Carousel className='imageGallery' controls={false} fade>
                   {/* Mapping images */}
-                    {images.map((src, idx) => (
+                    {kodakPosts? kodakPosts[0].images.map((src, idx) => (
                       <Carousel.Item key={idx}>
                         <img 
                           src={src} 
@@ -133,7 +149,7 @@ useEffect(() => {
                           alt={`Gallery image ${idx + 1}`}
                           />
                       </Carousel.Item>
-                    ))}
+                    )) : <></>}
                 </Carousel>
                 <img src={kodak} alt="kodak easyshare pink background" className="kodak"/>
               </div>

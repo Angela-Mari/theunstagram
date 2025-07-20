@@ -18,16 +18,24 @@ import Button from 'react-bootstrap/Button';
 import agbw from './assets/bw.png';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
+import Dropdown from 'react-bootstrap/Dropdown';
+import ButtonGroup from 'react-bootstrap/ButtonGroup';
+
 
 function App() {
 
+  const [posts, setPosts] = useState()
 
+  const [episodes, setEpisodes] = useState()
 
-const [posts, setPosts] = useState()
+  const [kodakPosts, setKodakPosts] = useState()
 
-const [episodes, setEpisodes] = useState()
-
-const [kodakPosts, setKodakPosts] = useState()
+  // Logic for DropDown Slector, this shoudl make it so the images can change when selecting a different album
+  const [index, setIndex] = useState(0);
+  const handleSelect = (eventKey) => {
+    setIndex(eventKey);
+    console.log('Selected: ', eventKey)
+  }
 
 useEffect(() => {
   fetch('https://angelageorge.com/wp-json/wp/v2/posts?categories=53&per_page=5')
@@ -45,9 +53,10 @@ useEffect(() => {
       setEpisodes(episodeData)
     })
     .catch(err => console.error('Error fetching episodes:', err));
-
+  
+  // 308 is the tag for kodak posts
   fetch('https://angelageorge.com/wp-json/wp/v2/posts?tags=308')
-     .then(res => res.json())
+    .then(res => res.json())
       .then((kodakData) => {
         const processedPosts = kodakData.map(post => {
           const html = post.content.rendered;
@@ -57,8 +66,12 @@ useEffect(() => {
           const doc = parser.parseFromString(html, 'text/html');
           const images = Array.from(doc.querySelectorAll('img')).map(img => img.src);
 
+          const date = new Date(post.date);
+          const fullMonthName = date.toLocaleString('default', { month: 'long' }); // e.g., "July"
+          const year = date.getFullYear();
+
           return {
-            date: post.date,
+            date: `${fullMonthName} ${year}`,
             images,
           };
         });
@@ -78,8 +91,6 @@ useEffect(() => {
 
   const handleCloseKodak = () => setShowKodak(false);
   const handleShowKodak = () => setShowKodak(true);
-
-  console.log(kodakPosts)
 
   return (
     <div style={{backgroundImage:"linear-gradient( #4B3AD4, #AF1A87 75%, #FF0048 95%)", height:"100%"}}>
@@ -135,12 +146,29 @@ useEffect(() => {
           <Col  lg={8} md={7} >
             {/* Image Carousel */}
             <Row >
+
+                
               <Col className="d-flex flex-column justify-content-center">
+              <Dropdown as={ButtonGroup} style={{maxWidth:"200px"}} onSelect={handleSelect}>
+                  <Button variant="success">{kodakPosts ? kodakPosts[index].date : ""}</Button>
+                  <Dropdown.Toggle split variant="primary" id="dropdown-split-basic" />
+                  <Dropdown.Menu>
+                    {
+                    kodakPosts? kodakPosts.map((post, idx) => (
+                      <Dropdown.Item eventKey={idx}>
+                        {post.date}
+                      </Dropdown.Item>
+                      ))
+                    :
+                    <></>
+                    }
+                  </Dropdown.Menu>
+              </Dropdown>
               <div className='scaled-camera'>
               <div className='camera'>
                 <Carousel className='imageGallery' controls={false} fade>
                   {/* Mapping images */}
-                    {kodakPosts? kodakPosts[0].images.map((src, idx) => (
+                    {kodakPosts? kodakPosts[index].images.map((src, idx) => (
                       <Carousel.Item key={idx}>
                         <img 
                           src={src} 

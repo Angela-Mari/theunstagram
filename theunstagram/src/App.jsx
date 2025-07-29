@@ -131,26 +131,29 @@ useEffect(() => {
           {/* Kodak & Manifesto */}
 
           {/* Blog & iPod */}
-          <Col lg={3} md={4} className="d-flex flex-column justify-content-center">
-            <Container className="blogContainer">
+          <Col lg={3} md={4} className="d-flex flex-column justify-content-center order-2 order-md-1 order-lg-1">
+            <Container className="blogContainer order-2 order-md-1">
               {
                   posts?  <Blog posts={posts}></Blog> : <></>
               }
             </Container>
+            <Container className="order-1 order-md-2">
               {
                 episodes?  <IPod episodes={episodes}></IPod> : <></>
               }
-            
+            </Container>
           </Col>
-
-          <Col  lg={8} md={7} >
+          
+          {/* Kodak */}
+          <Col  lg={8} md={7} className="order-1 order-md-2 order-lg-2">
             {/* Image Carousel */}
             <Row >
 
                 
-              <Col className="d-flex flex-column justify-content-center">
-              <Dropdown as={ButtonGroup} style={{maxWidth:"200px"}} onSelect={handleSelect}>
-                  <Button variant="success">{kodakPosts ? kodakPosts[index].date : ""}</Button>
+              <Col className="d-flex flex-column justify-content-center align-items-center ">
+              
+              <Dropdown as={ButtonGroup} style={{maxWidth:"200px", marginBottom:"20px"}} onSelect={handleSelect}>
+                  <Button variant="primary">{kodakPosts ? kodakPosts[index].date : ""}</Button>
                   <Dropdown.Toggle split variant="primary" id="dropdown-split-basic" />
                   <Dropdown.Menu>
                     {
@@ -164,6 +167,7 @@ useEffect(() => {
                     }
                   </Dropdown.Menu>
               </Dropdown>
+              
               <div className='scaled-camera'>
               <div className='camera'>
                 <Carousel className='imageGallery' controls={false} fade>
